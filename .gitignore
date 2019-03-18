@@ -1,0 +1,5 @@
+.DS_Store
+PhotosBackup.xcodeproj/xcuserdata/**
+PhotosBackup.xcodeproj/project.xcworkspace/**
+PhotosBackup.xcodeproj/xcshareddata/xcbaselines/**
+PhotosBackup/Resources/rsync
