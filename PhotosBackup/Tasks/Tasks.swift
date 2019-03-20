@@ -35,13 +35,11 @@ class Tasks {
             logBuffer.append("Mount point set to \(mpStr)")
             os_log("Mounted volume at %{public}@", log: .fileSystem, type: .info, mpStr)
             if let pt = mountPoint {
-                DispatchQueue.global(qos: .default).async { [weak self] in
-                    do {
-                        let capacity = try self?.getMaxCapacity(forVolume: pt)
-                        self?.mountCapacity = capacity
-                    } catch {
-                        os_log("Unable to get capacity", log: .fileSystem, type: .error)
-                    }
+                do {
+                    let capacity = try getMaxCapacity(forVolume: pt)
+                    mountCapacity = capacity
+                } catch {
+                    os_log("Unable to get capacity", log: .fileSystem, type: .error)
                 }
             }
         }
