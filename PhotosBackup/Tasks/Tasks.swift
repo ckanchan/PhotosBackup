@@ -20,12 +20,6 @@ import Cocoa
 import os
 
 class Tasks {
-    enum `Error`: Swift.Error {
-        case CouldNotCreateSparseBundleDiskImage
-        case UnableToMountSparseBundle
-        case MountPointNotReachable
-        case UnableToMountNetworkVolume
-    }
     
     static let defaultVolumeName = "photosBackup"
     var logBuffer: String = "" {
