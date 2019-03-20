@@ -24,14 +24,12 @@ extension Tasks {
         guard let photosLibraryURL = url else {return}
         let fm = FileManager.default
         guard fm.fileExists(atPath: photosLibraryURL.path) else {
-            NSAlert.photosLibraryNotFound.runModal()
-            return
+            throw Error.PhotosLibraryNotFound
         }
         
         guard fm.fileExists(atPath: destination.path) else {
-            NSAlert.mountPointNotFound.runModal()
             mountPoint = nil
-            return
+            throw Error.MountPointNotReachable
         }
         
         
@@ -69,5 +67,7 @@ extension Tasks {
         try self.runTask(rsync,
                          stdOutHandler: rsyncOutputHandler,
                          stdErrHandler: readabilityHandler(label: "RsyncError"))
+        
+        rsync.waitUntilExit()
     }
 }
