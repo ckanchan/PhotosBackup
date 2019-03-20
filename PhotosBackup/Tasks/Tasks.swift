@@ -90,30 +90,37 @@ class Tasks {
     }
     
 
-    func validatePhotosStatus() {
-        let msg: String
-        
+    func validatePhotosStatus() -> PhotosLibraryStatus {
+
         switch (configuration.photosLibraryURL, configuration.getPhotosInfo()) {
         case (.some, .some(let photosInfo)):
-            msg = " Found photos library at \(photosInfo.url.path) size \(photosInfo.size / 1_048_576) MB"
-            configuration.setPhotosAccess(true)
+            if photosInfo.size != 0 {
+                logBuffer.append("Found photos library at \(photosInfo.url.path) size \(photosInfo.size / 1_048_576) MB\n")
+                os_log(.info, log: .fileSystem, "Found photos library with size")
+                return .Accessible
+
+            } else {
+                logBuffer.append("Found photos library at \(photosInfo.url.path) but unable to read any data from this location. Likely photos access is not granted.\n")
+                os_log(.error, log: .fileSystem, "Unable to read from location")
+                return .PermissionDenied
+            }
+            
         case (.some(let url), .none):
-            msg = "Photos library location set to \(url.path) but unable to get information. Will try again later"
-            configuration.setPhotosAccess(false)
-        case (.none, .none): msg = "No photos library location set"
-            configuration.setPhotosAccess(nil)
+            logBuffer.append("Photos library location set to \(url.path) but unable to get information. Will try again later\n")
+            os_log(.info, log: .fileSystem, "Photos library location set, no information returned: destination unreachable")
+            return .Unreachable
+            
+        case (.none, .none):
+            logBuffer.append("No photos library location set\n")
+            return .Unconfigured
+
         case (.none, .some): fatalError("Shouldn't be able to reach this state!")
         }
-        
-        logBuffer.append(msg + "\n")
 
     }
     
-    
-    init(withConfiguration configuration: Configuration) {
-        self.configuration = configuration
-        validatePhotosStatus()
-        if !configuration.hasPhotosAccess {
+    func promptPhotosAccess(){
+        DispatchQueue.main.async {
             switch NSAlert.promptPhotosAccess().runModal() {
             case .alertFirstButtonReturn: // 'Open System Preferences'
                 let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy")!
@@ -126,8 +133,24 @@ class Tasks {
                 exit(EXIT_FAILURE)
             }
         }
+    }
     
-    if let sparseBundleURL = configuration.sparseBundleURL {
+    init(withConfiguration configuration: Configuration) {
+        self.configuration = configuration
+        switch validatePhotosStatus() {
+        case .PermissionDenied:
+            promptPhotosAccess()
+        case .Unreachable:
+            if NSApp.isActive {
+                NSAlert.photosLibraryNotFound.runModal()
+            } else {
+                notifyUnreachablePhotosLibrary()
+            }
+        case .Accessible, .Unconfigured:
+            break
+        }
+        
+        if let sparseBundleURL = configuration.sparseBundleURL {
             do {
                 os_log("Attempting to mount sparse bundle at url: %{public}@", log: .fileSystem, type: .info, sparseBundleURL.path)
                 try mountSparseBundle(atURL: sparseBundleURL)

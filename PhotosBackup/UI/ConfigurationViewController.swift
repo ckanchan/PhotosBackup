@@ -28,6 +28,8 @@ class ConfigurationViewController: NSViewController {
     @IBOutlet weak var backupStatus: NSLevelIndicator!
     @IBOutlet weak var backupStatusText: NSTextField!
     @IBOutlet weak var backupProgress: NSProgressIndicator!
+    @IBOutlet weak var sparseBundleCreationProgress: NSProgressIndicator!
+    @IBOutlet weak var createNewButton: NSButton!
     
     
     func updatePhotoFields() {
@@ -43,7 +45,11 @@ class ConfigurationViewController: NSViewController {
                     vc.photosLibrarySize.stringValue = vc.formatSize(photosInfo.size)
                     vc.libStatus.criticalValue = 0
                 } else {
-                    vc.photosLibraryField.attributedStringValue = NSAttributedString(string: "No photos library selected", attributes: [.foregroundColor: NSColor.placeholderTextColor])
+                    if let url = vc.configuration.photosLibraryURL {
+                        vc.photosLibraryField.attributedStringValue = NSAttributedString(string: url.path, attributes: [.foregroundColor: NSColor.systemRed])
+                    } else {
+                        vc.photosLibraryField.attributedStringValue = NSAttributedString(string: "No photos library selected", attributes: [.foregroundColor: NSColor.placeholderTextColor])
+                    }
                     vc.photosLibrarySize.attributedStringValue = NSAttributedString(string: "Not available", attributes: [.foregroundColor: NSColor.placeholderTextColor])
                     vc.libStatus.criticalValue = 1
                 }
@@ -68,6 +74,22 @@ class ConfigurationViewController: NSViewController {
         }
         
         setMountStatus()
+    }
+    
+    func showCreatingSparseBundle() {
+        self.sparseBundleCreationProgress.startAnimation(self)
+        self.sparseBundleField.attributedStringValue = NSAttributedString(string: "Creating sparse bundle", attributes: [.foregroundColor: NSColor.placeholderTextColor])
+        self.sparseBundleSize.attributedStringValue = NSAttributedString(string: "", attributes: [.foregroundColor: NSColor.placeholderTextColor])
+        
+        self.sparseBundleField.isEditable = false
+        self.createNewButton.isEnabled = false
+    }
+    
+    func finishedCreatingSparseBundle(){
+        self.sparseBundleCreationProgress.stopAnimation(self)
+        self.sparseBundleField.isEditable = true
+        self.createNewButton.isEnabled = true
+        updateSparseBundleFields()
     }
     
     @objc func setLastBackup() {
@@ -163,6 +185,18 @@ class ConfigurationViewController: NSViewController {
         }
     }
     
+    @IBAction func submitPhotosLibraryLocation(_ sender: NSTextField) {
+        if let url = URL(string: sender.stringValue),
+            url.pathExtension == "photoslibrary",
+            FileManager.default.fileExists(atPath: url.path) {
+            self.configuration.savePhotosLibraryURL(url)
+            self.updatePhotoFields()
+        } else {
+            NSAlert.invalidPhotosLibrary.runModal()
+        }
+    }
+    
+    
     @IBAction func setSparseBundleLocation(_ sender: Any) {
         let sparseBundlePanel = NSOpenPanel()
         sparseBundlePanel.message = "Select location of pre-existing .sparsebundle"
@@ -185,6 +219,18 @@ class ConfigurationViewController: NSViewController {
         }
     }
     
+    @IBAction func submitSparseBundleLocation(_ sender: NSTextField) {
+        if let url = URL(string: sender.stringValue),
+            url.pathExtension == "sparsebundle",
+            FileManager.default.fileExists(atPath: url.path) {
+            self.configuration.saveSparseBundleURL(url)
+            self.updateSparseBundleFields()
+        } else {
+            NSAlert.invalidSparseBundle.runModal()
+        }
+    }
+    
+    
     @IBAction func createSparseBundle(_ sender: Any) {
         let sparseBundlePanel = NSOpenPanel()
         sparseBundlePanel.canChooseFiles = false
@@ -194,6 +240,7 @@ class ConfigurationViewController: NSViewController {
         sparseBundlePanel.beginSheetModal(for: self.view.window!) { [unowned self] response in
             guard response == .OK,
                 let selectedDirectory = sparseBundlePanel.url else { return }
+            self.showCreatingSparseBundle()
             
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 guard let configuration = self?.configuration,
@@ -214,7 +261,7 @@ class ConfigurationViewController: NSViewController {
                 
                 configuration.saveSparseBundleURL(url)
                 DispatchQueue.main.async { [weak self] in
-                    self?.updateSparseBundleFields()
+                    self?.finishedCreatingSparseBundle()
                 }
             }
         }

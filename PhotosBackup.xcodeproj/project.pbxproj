@@ -20,6 +20,8 @@
 		545C81712222B80B00F55A91 /* rsync in Resources */ = {isa = PBXBuildFile; fileRef = 545C81702222B80B00F55A91 /* rsync */; };
 		546310FD2240050400945111 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54279750223A31DB004F736D /* URL+Extensions.swift */; };
 		5463110022400F8600945111 /* ConfigurationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546310FF22400F8600945111 /* ConfigurationKeys.swift */; };
+		54B8C9232242958F000AC9B8 /* Tasks+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B8C9222242958F000AC9B8 /* Tasks+Error.swift */; };
+		54B8C9252242A0FD000AC9B8 /* PhotosLibraryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B8C9242242A0FD000AC9B8 /* PhotosLibraryStatus.swift */; };
 		54DE0740223BD78900AA50E0 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE073F223BD78900AA50E0 /* Notifications.swift */; };
 		54DE0742223BDA6A00AA50E0 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE0741223BDA6900AA50E0 /* Alerts.swift */; };
 		54DE0744223BE81400AA50E0 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DE0743223BE81400AA50E0 /* ScheduleViewController.swift */; };
@@ -61,6 +63,8 @@
 		545C81672221E35C00F55A91 /* PhotosBackup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhotosBackup.entitlements; sourceTree = "<group>"; };
 		545C81702222B80B00F55A91 /* rsync */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = rsync; sourceTree = "<group>"; };
 		546310FF22400F8600945111 /* ConfigurationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationKeys.swift; sourceTree = "<group>"; };
+		54B8C9222242958F000AC9B8 /* Tasks+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tasks+Error.swift"; sourceTree = "<group>"; };
+		54B8C9242242A0FD000AC9B8 /* PhotosLibraryStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosLibraryStatus.swift; sourceTree = "<group>"; };
 		54DE073F223BD78900AA50E0 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		54DE0741223BDA6900AA50E0 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		54DE0743223BE81400AA50E0 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				5409B5B02235664F00DBADD6 /* Tasks.swift */,
+				54B8C9242242A0FD000AC9B8 /* PhotosLibraryStatus.swift */,
+				54B8C9222242958F000AC9B8 /* Tasks+Error.swift */,
 				54F32534223E91D500CA7539 /* SparseBundleManagement.swift */,
 				54F32532223E918000CA7539 /* Processes.swift */,
 				54F32530223E913A00CA7539 /* RSync.swift */,
@@ -314,10 +320,12 @@
 				5415FFC72236ECA30073B285 /* ViewControllerExtensions.swift in Sources */,
 				54F3252E223E8D4000CA7539 /* OSLogs.swift in Sources */,
 				5463110022400F8600945111 /* ConfigurationKeys.swift in Sources */,
+				54B8C9232242958F000AC9B8 /* Tasks+Error.swift in Sources */,
 				54F32535223E91D500CA7539 /* SparseBundleManagement.swift in Sources */,
 				54F32531223E913A00CA7539 /* RSync.swift in Sources */,
 				54DE0742223BDA6A00AA50E0 /* Alerts.swift in Sources */,
 				5409B5AC223541C400DBADD6 /* ConfigurationViewController.swift in Sources */,
+				54B8C9252242A0FD000AC9B8 /* PhotosLibraryStatus.swift in Sources */,
 				54F32537223FC19000CA7539 /* UserNotifications.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

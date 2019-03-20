@@ -42,3 +42,11 @@ func notifyError(_ error: Error) {
     let request = UNNotificationRequest(identifier: "me.chaidk.photosBackup.backupError", content: notification, trigger: nil)
     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 }
+
+func notifyUnreachablePhotosLibrary() {
+    let notification = UNMutableNotificationContent()
+    notification.title = "Photos library unreachable"
+    notification.body = "Could not find photos library at the specified location and could not continue with backup. Please check it exists and try again"
+    let request = UNNotificationRequest(identifier: "me.chaidk.photosBackup.unreachablePhotosLibrary", content: notification, trigger: nil)
+    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+}

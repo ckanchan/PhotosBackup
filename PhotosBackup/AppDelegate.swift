@@ -71,22 +71,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return nil
         }
     }
-    
-    func requestPhotosAccess() {
-        if !configuration.hasPhotosAccess {
-            switch NSAlert.promptPhotosAccess().runModal() {
-            case .alertFirstButtonReturn: // 'Open System Preferences'
-                let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy")!
-                NSWorkspace.shared.open(url)
-            case .alertSecondButtonReturn: //Quit
-                os_log("Photo access was not granted", log: .fileSystem, type: .error)
-                exit(EXIT_FAILURE)
-            default:
-                os_log("Unspecified error requesting photo access", log: .fileSystem, type: .error)
-                exit(EXIT_FAILURE)
-            }
-        }
-    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let instances = duplicateInstances() {
@@ -287,11 +271,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 guard let library = configuration.photosLibraryURL,
                     let destination = taskManager.mountPoint else {throw Tasks.Error.MountPointNotReachable}
                 setStatusBarIcon(to: .backup)
-                try taskManager.backupPhotosLibrary(at: library, to: destination)
-                os_log("Completed backup", log: .backup, type: .info)
-                setStatusBarIcon(to: .standby)
-                notifyBackupCompletedSuccessfully(from: configuration.photosLibraryURL,
-                                                  to: configuration.sparseBundleURL)
+                
+                DispatchQueue.global(qos: .background).async { [unowned self] in
+                    do {
+                        try self.taskManager.backupPhotosLibrary(at: library, to: destination)
+                        os_log("Completed backup", log: .backup, type: .info)
+                        DispatchQueue.main.async {
+                            self.setStatusBarIcon(to: .standby)
+                            notifyBackupCompletedSuccessfully(from: library,
+                                                              to: destination)
+                        }
+                    } catch let error as NSError {
+                        DispatchQueue.main.async { [unowned self] in
+                            NSAlert(error: error).runModal()
+                            self.setStatusBarIcon(to: .error)
+                        }
+                    }
+                }
             } else {
                 guard let configuredSparseBundle = configuration.sparseBundleURL else {
                     NSAlert.mountPointNotFound.runModal()
@@ -304,14 +300,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 setStatusBarIcon(to: .standby)
                 return
             }
-        } catch {
-            let err = error.localizedDescription
+        } catch Tasks.Error.CouldNotCreateSparseBundleDiskImage {
+            let err = "Unable to create sparse bundle disk image"
             os_log("Error running backup: %{public}@", log: .backup, type: .error, err)
             DispatchQueue.main.async { [unowned self] in
-                NSAlert.mountPointNotFound.runModal()
+                NSAlert.unableToCreateSparseBundle.runModal()
                 self.setStatusBarIcon(to: .error)
             }
             return
+        } catch let error as NSError {
+            DispatchQueue.main.async { [unowned self] in
+                NSAlert(error: error).runModal()
+                self.setStatusBarIcon(to: .error)
+            }
         }
     }
     

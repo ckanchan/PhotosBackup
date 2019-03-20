@@ -674,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="PhotoBackup" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="PhotosBackup" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -735,7 +735,7 @@
         <!--Configuration-->
         <scene sceneID="b69-RN-LpT">
             <objects>
-                <viewController title="Configuration" storyboardIdentifier="ConfigurationViewController" id="a1i-ko-FoV" customClass="ConfigurationViewController" customModule="PhotoBackup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Configuration" storyboardIdentifier="ConfigurationViewController" id="a1i-ko-FoV" customClass="ConfigurationViewController" customModule="PhotosBackup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="f5H-wg-WGY">
                         <rect key="frame" x="0.0" y="0.0" width="491" height="471"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -751,11 +751,14 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="285" id="CrE-6I-A3b"/>
                                             </constraints>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Path to photo library" drawsBackground="YES" id="e4I-wo-ln7">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Path to photo library" drawsBackground="YES" id="e4I-wo-ln7">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <action selector="submitPhotosLibraryLocation:" target="a1i-ko-FoV" id="OuU-4q-sUB"/>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8d0-su-3TG">
                                             <rect key="frame" x="18" y="12" width="30" height="17"/>
@@ -811,7 +814,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="qyE-v6-Zp8"/>
                                 </constraints>
-                                <font key="titleFont" metaFont="smallSystem"/>
                             </box>
                             <box title="Backup Location" translatesAutoresizingMaskIntoConstraints="NO" id="11P-2f-85a">
                                 <rect key="frame" x="17" y="176" width="457" height="154"/>
@@ -824,11 +826,14 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="285" id="nfB-1C-kYF"/>
                                             </constraints>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Path to sparse bundle" drawsBackground="YES" id="TD4-yL-PCC">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Path to sparse bundle" drawsBackground="YES" id="TD4-yL-PCC">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <action selector="submitSparseBundleLocation:" target="a1i-ko-FoV" id="RHd-h9-1wq"/>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Boa-6X-RKK">
                                             <rect key="frame" x="18" y="66" width="64" height="17"/>
@@ -877,6 +882,9 @@
                                                 </connections>
                                             </buttonCell>
                                         </button>
+                                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="oxx-nb-nEc">
+                                            <rect key="frame" x="238" y="23" width="16" height="16"/>
+                                        </progressIndicator>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="QU3-x4-dNN" firstAttribute="firstBaseline" secondItem="hS8-Ed-Y1q" secondAttribute="firstBaseline" id="3Hh-Sr-5yb"/>
@@ -888,6 +896,8 @@
                                         <constraint firstItem="v67-bY-ul8" firstAttribute="leading" secondItem="Boa-6X-RKK" secondAttribute="trailing" constant="5" id="O9J-hS-Q6v"/>
                                         <constraint firstItem="QU3-x4-dNN" firstAttribute="leading" secondItem="hS8-Ed-Y1q" secondAttribute="trailing" constant="12" id="U5x-o7-bwf"/>
                                         <constraint firstItem="Boa-6X-RKK" firstAttribute="leading" secondItem="2YG-IJ-Ikw" secondAttribute="leading" id="UIG-OS-3Rc"/>
+                                        <constraint firstItem="oxx-nb-nEc" firstAttribute="leading" secondItem="L8t-Cn-JBn" secondAttribute="trailing" constant="8" id="XMT-gl-H2V"/>
+                                        <constraint firstItem="oxx-nb-nEc" firstAttribute="centerY" secondItem="L8t-Cn-JBn" secondAttribute="centerY" id="YMH-Vh-Z2t"/>
                                         <constraint firstItem="hS8-Ed-Y1q" firstAttribute="firstBaseline" secondItem="2YG-IJ-Ikw" secondAttribute="firstBaseline" id="aSL-0D-j47"/>
                                         <constraint firstItem="hS8-Ed-Y1q" firstAttribute="leading" secondItem="2YG-IJ-Ikw" secondAttribute="trailing" constant="13" id="e8X-4Y-jZO"/>
                                         <constraint firstItem="Boa-6X-RKK" firstAttribute="top" secondItem="2YG-IJ-Ikw" secondAttribute="bottom" constant="16" id="ef3-XY-UqH"/>
@@ -899,7 +909,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="gRm-tF-oOr"/>
                                 </constraints>
-                                <font key="titleFont" metaFont="smallSystem"/>
                             </box>
                             <button imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUt-Qn-5Wv">
                                 <rect key="frame" x="379" y="50" width="92" height="109"/>
@@ -1021,10 +1030,12 @@
                         <outlet property="backupProgress" destination="0Te-r0-5xU" id="PIv-0P-o2i"/>
                         <outlet property="backupStatus" destination="PQ9-NK-4cK" id="Nci-gw-dNQ"/>
                         <outlet property="backupStatusText" destination="lDP-Pf-xfE" id="ghP-2q-kLU"/>
+                        <outlet property="createNewButton" destination="L8t-Cn-JBn" id="MR4-cl-XCj"/>
                         <outlet property="libStatus" destination="yx9-mE-1kg" id="WAI-qm-uBV"/>
                         <outlet property="mountStatus" destination="xMN-lh-1bd" id="Fst-8r-4av"/>
                         <outlet property="photosLibraryField" destination="Lr4-rd-0hS" id="Los-4q-S0A"/>
                         <outlet property="photosLibrarySize" destination="jk3-vM-Mce" id="EKG-PE-CyV"/>
+                        <outlet property="sparseBundleCreationProgress" destination="oxx-nb-nEc" id="Xqh-GX-9uY"/>
                         <outlet property="sparseBundleField" destination="hS8-Ed-Y1q" id="C2f-O4-huB"/>
                         <outlet property="sparseBundleSize" destination="v67-bY-ul8" id="XgZ-Jz-Rai"/>
                     </connections>
@@ -1036,7 +1047,7 @@
         <!--Log-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="Log" id="XfG-lQ-9wD" customClass="LogViewController" customModule="PhotoBackup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Log" id="XfG-lQ-9wD" customClass="LogViewController" customModule="PhotosBackup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="490" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1086,7 +1097,6 @@
                                         <constraint firstAttribute="trailing" secondItem="DuQ-Q4-Fhc" secondAttribute="trailing" constant="10" id="he8-ad-zbV"/>
                                     </constraints>
                                 </view>
-                                <font key="titleFont" metaFont="smallSystem"/>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A7p-O2-fSh">
                                 <rect key="frame" x="367" y="3" width="119" height="32"/>
@@ -1120,7 +1130,7 @@
         <!--Schedule-->
         <scene sceneID="Muo-ye-hfw">
             <objects>
-                <viewController title="Schedule" id="KjE-Tl-rVD" customClass="ScheduleViewController" customModule="PhotoBackup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Schedule" id="KjE-Tl-rVD" customClass="ScheduleViewController" customModule="PhotosBackup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="dwX-qe-bR2">
                         <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1219,7 +1229,6 @@
                                         <constraint firstItem="5dd-ZS-lwf" firstAttribute="top" secondItem="DeE-q0-4qS" secondAttribute="top" id="xXT-LN-hUs"/>
                                     </constraints>
                                 </view>
-                                <font key="titleFont" metaFont="smallSystem"/>
                             </box>
                         </subviews>
                         <constraints>
@@ -1244,7 +1253,7 @@
         <!--About-->
         <scene sceneID="c8q-gz-PNG">
             <objects>
-                <viewController title="About" id="5gg-lu-SnR" customClass="AboutViewController" customModule="PhotoBackup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="About" id="5gg-lu-SnR" customClass="AboutViewController" customModule="PhotosBackup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="YOF-Bp-pEM">
                         <rect key="frame" x="0.0" y="0.0" width="484" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

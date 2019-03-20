@@ -21,10 +21,6 @@ import Photos
 
 class Configuration {
     private var userDefaults: UserDefaults
-
-    var hasPhotosAccess: Bool {
-        return userDefaults.bool(forKey: .HasPhotosAccess)
-    }
     
     var photosLibraryURL: URL? {
         return userDefaults.url(forKey: .PhotosLibraryURLKey)
@@ -55,10 +51,6 @@ class Configuration {
         default:
             return false
         }
-    }
-    
-    func setPhotosAccess(_ hasAccess: Bool?) {
-        userDefaults.set(hasAccess, forKey: .HasPhotosAccess)
     }
     
     func savePhotosLibraryURL(_ url: URL) {
