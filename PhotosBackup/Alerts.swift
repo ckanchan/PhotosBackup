@@ -23,6 +23,7 @@ extension NSAlert {
         let alert = NSAlert()
         alert.messageText = "Invalid photos library"
         alert.informativeText = "The selected file couldn't be opened or isn't a valid photos library"
+        alert.alertStyle = .critical
         return alert
     }
     
@@ -30,6 +31,7 @@ extension NSAlert {
         let alert = NSAlert()
         alert.messageText = "Invalid sparsebundle"
         alert.informativeText = "The selected file couldn't be opened or isn't a valid sparsebundle"
+        alert.alertStyle = .critical
         return alert
     }
     
@@ -37,6 +39,7 @@ extension NSAlert {
         let alert = NSAlert()
         alert.messageText = "Unable to create backup target"
         alert.informativeText = "Could not create a sparse bundle directory at the location specified. Please choose another location and try again"
+        alert.alertStyle = .critical
         return alert
     }
     
@@ -44,6 +47,7 @@ extension NSAlert {
         let alert = NSAlert()
         alert.messageText = "No photo library could be found at the specified location"
         alert.informativeText = "Check the photo library exists at the path specified and try again"
+        alert.alertStyle = .critical
         return alert
     }
     
@@ -51,12 +55,14 @@ extension NSAlert {
         let alert = NSAlert()
         alert.messageText = "The backup location could not be found"
         alert.informativeText = "Check to see whether the sparsebundle exists at the path specified, and whether it mounted correctly"
+        alert.alertStyle = .critical
         return alert
     }
     
     static var logSaveError: NSAlert {
         let alert = NSAlert()
         alert.messageText = "Error saving log"
+        alert.alertStyle = .warning
         return alert
     }
     
@@ -64,6 +70,7 @@ extension NSAlert {
         let alert = NSAlert()
         alert.messageText = "The backup location is too small"
         alert.informativeText = "The selected sparsebundle doesn't have enough mounted capacity to hold a backup of the photos library. Create a new sparse bundle or resize the selected sparsebundle to continue"
+        alert.alertStyle = .critical
         return alert
     }
     
@@ -80,6 +87,7 @@ extension NSAlert {
         \(additionalInstancePids)
         """
         alert.addButton(withTitle: "Quit")
+        alert.alertStyle = .critical
         return alert
     }
     
@@ -93,6 +101,7 @@ extension NSAlert {
         
         alert.addButton(withTitle: "Open System Preferences")
         alert.addButton(withTitle: "Quit")
+        alert.alertStyle = .warning
         
         return alert
     }
