@@ -12,6 +12,7 @@
 		5409B5B12235664F00DBADD6 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5409B5B02235664F00DBADD6 /* Tasks.swift */; };
 		5409B5B92236371400DBADD6 /* PhotoBackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5409B5B82236371400DBADD6 /* PhotoBackupTests.swift */; };
 		5415FFC72236ECA30073B285 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5415FFC62236ECA30073B285 /* ViewControllerExtensions.swift */; };
+		54216FA52243D4CD00E7768D /* PhotosBackup_(main).help in Resources */ = {isa = PBXBuildFile; fileRef = 54216FA42243D4CD00E7768D /* PhotosBackup_(main).help */; };
 		54279751223A31DB004F736D /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54279750223A31DB004F736D /* URL+Extensions.swift */; };
 		545C815E2221E35A00F55A91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545C815D2221E35A00F55A91 /* AppDelegate.swift */; };
 		545C81602221E35A00F55A91 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545C815F2221E35A00F55A91 /* LogViewController.swift */; };
@@ -53,6 +54,7 @@
 		5409B5B82236371400DBADD6 /* PhotoBackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBackupTests.swift; sourceTree = "<group>"; };
 		5409B5BA2236371400DBADD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5415FFC62236ECA30073B285 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
+		54216FA42243D4CD00E7768D /* PhotosBackup_(main).help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "PhotosBackup_(main).help"; sourceTree = "<group>"; };
 		54279750223A31DB004F736D /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		545C815A2221E35A00F55A91 /* PhotosBackup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosBackup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		545C815D2221E35A00F55A91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		545C816D2222A93700F55A91 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				54216FA42243D4CD00E7768D /* PhotosBackup_(main).help */,
 				545C81702222B80B00F55A91 /* rsync */,
 			);
 			path = Resources;
@@ -288,6 +291,7 @@
 				545C81622221E35C00F55A91 /* Assets.xcassets in Resources */,
 				54DE0748223BF1F200AA50E0 /* LICENSE in Resources */,
 				545C81652221E35C00F55A91 /* Main.storyboard in Resources */,
+				54216FA52243D4CD00E7768D /* PhotosBackup_(main).help in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

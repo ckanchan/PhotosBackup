@@ -990,6 +990,16 @@
                                     <constraint firstAttribute="width" constant="300" id="HAE-Mk-Sg0"/>
                                 </constraints>
                             </progressIndicator>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5qx-S5-Z3a">
+                                <rect key="frame" x="448" y="6" width="25" height="25"/>
+                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MgC-55-TOw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showHelp:" target="mNt-8M-1i0" id="hNd-5V-gqW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="CUt-Qn-5Wv" firstAttribute="leading" secondItem="Eeh-iX-pX5" secondAttribute="trailing" constant="149" id="0Ei-GY-A4M"/>
@@ -1000,11 +1010,13 @@
                             <constraint firstItem="Eeh-iX-pX5" firstAttribute="top" secondItem="xFX-C0-zh1" secondAttribute="bottom" constant="10" id="7Y3-Tr-0Z5"/>
                             <constraint firstItem="11P-2f-85a" firstAttribute="centerX" secondItem="f5H-wg-WGY" secondAttribute="centerX" id="DPv-x4-yK5"/>
                             <constraint firstAttribute="bottom" secondItem="lDP-Pf-xfE" secondAttribute="bottom" constant="20" id="DpW-TU-NCB"/>
+                            <constraint firstAttribute="bottom" secondItem="5qx-S5-Z3a" secondAttribute="bottom" constant="10" id="GiD-8L-6Ph"/>
                             <constraint firstItem="0Te-r0-5xU" firstAttribute="top" secondItem="6hG-TI-jbe" secondAttribute="bottom" constant="10" id="HBC-ty-i04"/>
                             <constraint firstItem="lDP-Pf-xfE" firstAttribute="firstBaseline" secondItem="0Te-r0-5xU" secondAttribute="baseline" constant="20" id="KPh-ox-AKt"/>
                             <constraint firstItem="fVi-wj-Sro" firstAttribute="leading" secondItem="f5H-wg-WGY" secondAttribute="leading" constant="20" id="Ka9-3n-dY9"/>
                             <constraint firstItem="yx9-mE-1kg" firstAttribute="centerY" secondItem="xFX-C0-zh1" secondAttribute="centerY" id="LT8-iH-yit"/>
                             <constraint firstItem="xMN-lh-1bd" firstAttribute="leading" secondItem="f5H-wg-WGY" secondAttribute="leading" constant="20" id="NiR-su-NIs"/>
+                            <constraint firstAttribute="trailing" secondItem="5qx-S5-Z3a" secondAttribute="trailing" constant="20" id="QR3-6F-Eu3"/>
                             <constraint firstItem="CUt-Qn-5Wv" firstAttribute="leading" secondItem="0Te-r0-5xU" secondAttribute="trailing" constant="24" id="Twa-ZM-vHD"/>
                             <constraint firstItem="11P-2f-85a" firstAttribute="width" secondItem="gha-4g-3Ag" secondAttribute="width" id="UgV-wr-lyZ"/>
                             <constraint firstItem="6hG-TI-jbe" firstAttribute="leading" secondItem="PQ9-NK-4cK" secondAttribute="trailing" constant="19" id="Z2h-RO-eu8"/>

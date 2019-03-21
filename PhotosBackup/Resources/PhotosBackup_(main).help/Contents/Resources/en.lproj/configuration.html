@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<script>
+  window.location.href = "../index.html?localePath=en.lproj#/topic-en.lproj-configuration";
+</script>
+<meta charset='UTF-8'>
+<meta content='0; url=../index.html?localePath=en.lproj#/topic-en.lproj-configuration' http-equiv='refresh'>
+<meta content='Configuring the photos library and backup location.' name='description'>
+<title>Setup</title>
+</head>
+<body class='AppleTopic' dir='ltr' id='topic-en.lproj-configuration'>
+<a name='configuration'></a>
+<figure class='topicIcon'>
+  <img src="/Resources/SharedGlobalAssets/convention/icon_256x256.png" srcset="/Resources/SharedGlobalAssets/convention/icon_256x256.png 1x, /Resources/SharedGlobalAssets/convention/icon_256x256@2x.png 2x" alt="Icon 256x256" />
+</figure>
+<h1>Setup</h1>
+
+<p>On first run Photos Backup will need to be set up with a photos library, backup location and optionally a schedule on which to back up regularly.</p>
+
+<p class="note callout">On macOS 10.14 you may need to grant Photos Backup access to your Photos Library in Security Preferences due to improved privacy protection. Photos Backup will automatically prompt you for this. You can revoke this permission at any time from System Preferences, but then Photos Backup will stop working! However, if your photos library isn't located under <code>~/Pictures/</code> (where <code>~</code> is your Home folder) then the macOS privacy protections do not apply.</p>
+
+<p>After running the application for the first time, the Configuration panel will pop up automatically:</p>
+
+<p><figure>
+  <img src="/Resources/SharedGlobalAssets/images/Backup_firstrun.png" alt="Configuration Panel" />
+</figure></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>1</strong> Pane switcher</td>
+      <td>Access backup settings, the schedule, debug log or the About screen.</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong> Photos Library settings</td>
+      <td>Set the location of your photos library here, either by clicking on Set to use the file browser or entering the path directly. Photos Backup will calculate the size automatically</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong> Backup Location settings</td>
+      <td>Manages the <code>sparsebundle</code> file that will be the backup location. Set or create a new backup location here</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong> Status</td>
+      <td>Quick overview of any problems. If everything is set up correctly, click on <code>Back Up Now</code> to initiate a backup</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong> Last backup</td>
+      <td>Shows the date and time of the most recent backup performed by Photos Backup</td>
+    </tr>
+    <tr>
+      <td><strong>6</strong> Back Up Now</td>
+      <td>When everything is set up correctly, click on this button to start a back up.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="task_id_1" class="Task">
+<h2 class="Name" role="button" aria-controls="aria-task_id_1">
+    Setting the location of the photos library
+</h2>
+<div class="TaskBody" role="region" id="aria-task_id_1">
+    <p>To set the location of the photos library you would like to back up, either click the <code>Set</code> button to open the file picker, or type the path into the location field directly and press <code>RETURN</code>.</p>
+
+  </div>      
+</div>
+
+<div id="task_id_2" class="Task">
+<h2 class="Name" role="button" aria-controls="aria-task_id_2">
+    Setting up a new backup location
+</h2>
+<div class="TaskBody" role="region" id="aria-task_id_2">
+    <p>Photos Backup uses the <a href="topic-asides-sparsebundle.html#topic-asides-sparsebundle" aside="topic-asides-sparsebundle" class="xRef Aside">sparsebundle</a> disk image format to store its back ups. In most cases, you will want Photos Backup to create a new backup location.</p>
+
+    <p>To create a new backup location click <code>Create new backup location...</code> which will open the file picker panel. Select the folder in which you want to store your backups (which can be on a local, removable or remote drive), and click <code>Create</code>. Photos Backup will then create the <code>sparsebundle</code> and provision it with a capacity 1.5x the size of the selected photos library.</p>
+
+    <p>If you have not selected a photos library then Photos Backup will automatically create a 2GB <code>sparsebundle</code>. It is strongly recommended you select your photos library first so that you can be certain the backup location will have enough storage space.</p>
+
+  </div>      
+</div>
+
+<div id="task_id_3" class="Task">
+<h2 class="Name" role="button" aria-controls="aria-task_id_3">
+    Setting up an existing backup location
+</h2>
+<div class="TaskBody" role="region" id="aria-task_id_3">
+    <p>You can set a pre-existing <code>sparsebundle</code> instead of creating a new one. This is useful if you have used Photos Backup before, or are an advanced user who has created a <code>sparsebundle</code> manually. The backup location must be a <code>sparsebundle</code> with the name <code>photosBackup</code>.
+To select a previously existing backup location, click <code>Set</code>, which will open the file picker panel.</p>
+
+  </div>      
+</div>
+
+<p>Once <a href="topic-asides-configured.html#topic-asides-configured" aside="topic-asides-configured" class="xRef Aside">fully set up</a>, you can click <code>Back Up Now</code> to run an immediate backup, or configure the schedule and let Photos Backup automatically run in the background.</p>
+
+
+<div class='LinkUniversal'>
+<strong>
+See Also
+</strong>
+<a href="#/topic-en.lproj-schedule">Scheduling Backups</a>
+<a href="#/topic-en.lproj-troubleshooting">Troubleshooting</a>
+
+</div>
+</body>
+</html>

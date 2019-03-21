@@ -49,6 +49,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return NSMenuItem(title: "Quit", action: #selector(quitApp), keyEquivalent: "Q")
         }
         
+        static var help: NSMenuItem {
+            return NSMenuItem(title: "Help", action: #selector(NSApp.showHelp(_:)), keyEquivalent: "")
+        }
+        
         static var separator: NSMenuItem {
             return NSMenuItem.separator()
         }
@@ -91,6 +95,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                   MenuItem.separator,
                                   MenuItem.backup,
                                   MenuItem.configuration,
+                                  MenuItem.separator,
+                                  MenuItem.help,
                                   MenuItem.separator,
                                   MenuItem.quit]
         

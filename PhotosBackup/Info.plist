@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
@@ -32,6 +32,10 @@
 	<string>Main</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Photos Backup needs read access to your photos library in order to make back up copies.</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>PhotosBackup_(main).help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>me.chaidk.PhotosBackup.help</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

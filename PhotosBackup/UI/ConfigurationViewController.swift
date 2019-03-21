@@ -186,7 +186,8 @@ class ConfigurationViewController: NSViewController {
     }
     
     @IBAction func submitPhotosLibraryLocation(_ sender: NSTextField) {
-        if let url = URL(string: sender.stringValue),
+        if let path = sender.stringValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url = URL(string: path),
             url.pathExtension == "photoslibrary",
             FileManager.default.fileExists(atPath: url.path) {
             self.configuration.savePhotosLibraryURL(url)

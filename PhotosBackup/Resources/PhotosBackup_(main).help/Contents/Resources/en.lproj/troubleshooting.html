@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<script>
+  window.location.href = "../index.html?localePath=en.lproj#/topic-en.lproj-troubleshooting";
+</script>
+<meta charset='UTF-8'>
+<meta content='0; url=../index.html?localePath=en.lproj#/topic-en.lproj-troubleshooting' http-equiv='refresh'>
+<meta content='Solving common problems' name='description'>
+<title>Troubleshooting</title>
+</head>
+<body class='AppleTopic' dir='ltr' id='topic-en.lproj-troubleshooting'>
+<a name='troubleshooting'></a>
+<figure class='topicIcon'>
+  <img src="/Resources/SharedGlobalAssets/convention/icon_256x256.png" srcset="/Resources/SharedGlobalAssets/convention/icon_256x256.png 1x, /Resources/SharedGlobalAssets/convention/icon_256x256@2x.png 2x" alt="Icon 256x256" />
+</figure>
+<h1>Troubleshooting</h1>
+
+<h3 id="common-errors-and-possible-solutions">Common Errors and Possible Solutions</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Please grant photos access</strong></td>
+      <td>macOS 10.14 requires the user to explicitly approve applications to access the user's Photos Library in order to protect the user's privacy. You can resolve this issue by clicking on <code>Open System Preferences</code> in the alert prompt, which will take you to the Security-&gt;Privacy pane where you can approve or deny permission.</td>
+    </tr>
+    <tr>
+      <td><strong>Invalid photos library</strong></td>
+      <td>The selected file isn't a macOS Photos library. At this time Photos Backup only backs up macOS photo library packages which end in <code>.photoslibrary</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>No photos library could be found at the specified location</strong></td>
+      <td>A photos library you previously selected and which the app could access is no longer accessible. If it was on a removable or network drive, that drive might have been disconnected or unmounted, in which case try and reconnect to the drive. Otherwise, if stored internally, the path may have changed, or the library may have been deleted.</td>
+    </tr>
+    <tr>
+      <td><strong>Unable to create backup target</strong></td>
+      <td>Photos Backup was unable to automatically create a <code>sparsebundle</code> in the selected directory. This could be because there is not enough space on the selected volume, or you don't have write permission. Try selecting another location, or ensuring there is enough space to create a new file on the selected drive, and try again.</td>
+    </tr>
+    <tr>
+      <td><strong>Invalid sparsebundle</strong></td>
+      <td>The selected backup target is not a <code>sparsebundle</code> format disk image. Photos Backup needs a valid <code>sparsebundle</code> in order to mount it as a volume and run backups. Please make sure you've selected a valid <code>sparsebundle</code>, or create a new one using 'Create new backup location…'</td>
+    </tr>
+    <tr>
+      <td><strong>The backup location could not be found</strong></td>
+      <td>Check to see whether a <code>sparsebundle</code> exists at the backup location you specified, and whether it has mounted correctly. If it has mounted correctly you should be able to visit the path <code>/Volumes/photosBackup' in the Finder. To visit a custom path, open the Finder and press </code>⌘⇧G<code> to open the </code>Go to Folder…<code> dialog. If the </code>sparsebundle` is located on a network drive, check that the network drive is accessible. Photos Backup will try and remount the network drive if it has been disconnected, but may not be able to succeed if e.g., you are no longer on the same network.</td>
+    </tr>
+    <tr>
+      <td><strong>The backup location is too small</strong></td>
+      <td>The maximum size of the <code>sparsebundle</code> is set to one that is smaller than the photos library you are trying to back up. Check that the drive on which the <code>sparsebundle</code> file is located is large enough to accommodate your photos library. Then, you can either use the <code>hdiutil</code> utility in macOS to resize the <code>sparsebundle</code> manually, or create a new <code>sparsebundle</code> using the app. <em>Photos Backup will include the facility to enlarge <code>sparsebundle</code>s automatically in a future release</em></td>
+    </tr>
+    <tr>
+      <td><strong>This application is already running</strong></td>
+      <td>You have attempted to launch a second instance of Photos Backup. If you want to restart the app, first quit the existing instance, either by using the menu bar or killing the app in Activity Monitor or the command line. The error will show you the PIDs of all running Photos Backup processes to help you with this.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="advanced-troubleshooting">Advanced Troubleshooting</h3>
+
+<p>If the issue isn't solved by common errors and solutions, you may find more information about the error in the detailed log, found under the <code>Log</code> pane. From here you can read debug messages as well as the full output of the <code>rsync</code> process and attempt to resolve errors, or export the log.</p>
+
+</body>
+</html>

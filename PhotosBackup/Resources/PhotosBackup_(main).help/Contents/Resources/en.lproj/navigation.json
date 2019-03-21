@@ -1,0 +1,92 @@
+{
+    "birdseed_version": 5,
+    "build_id": "1.0",
+    "build_date": "2019.03.21-14:18:03",
+    "collect_feedback": false,
+    "copyright": "topic-en.lproj-copyright",
+    "copyright_text": "© 2019 Chaitanya Kanchan. All rights reserved.",
+    "css": "",
+    "enable_tracking": false,
+    "framework": "middlemac-3.0.0",
+    "icon": "",
+    "landing": "topic-Resources-en.lproj",
+    "locale": "en",
+    "platform": "mac",
+    "printable_page": "",
+    "product": "PhotosBackup",
+    "quick_links": [],
+    "sections": {
+    },
+    "show_previous_next": false,
+    "source_schema": "apd-schema",
+    "title": "PhotosBackup Help",
+    "toc": [
+        "topic-en.lproj-welcome",
+        "topic-en.lproj-configuration",
+        "topic-en.lproj-schedule",
+        "topic-en.lproj-troubleshooting"
+    ],
+    "topics": {
+        "topic-Resources-en.lproj": {
+            "name": "Photos Backup",
+            "href": "index.html",
+            "categories": [
+              "landing"
+            ]
+        },
+        "topic-asides-configured": {
+            "name": "Configured Photos Backup",
+            "summary": "Shows a fully configured configuration page",
+            "href": "asides/configured.html",
+            "categories": [
+              "aside"
+            ]
+        },
+        "topic-asides-sparsebundle": {
+            "name": "Sparse Bundles",
+            "summary": "A quick description of the `sparsebundle` disk image format",
+            "href": "asides/sparsebundle.html",
+            "categories": [
+              "aside"
+            ]
+        },
+        "topic-en.lproj-configuration": {
+            "name": "Setup",
+            "summary": "Configuring the photos library and backup location.",
+            "href": "configuration.html",
+            "categories": [
+            ]
+        },
+        "topic-en.lproj-copyright": {
+            "name": "License",
+            "summary": "License Page",
+            "href": "copyright.html",
+            "categories": [
+              "copyright"
+            ]
+        },
+        "topic-en.lproj-schedule": {
+            "name": "Scheduling backups",
+            "summary": "Configuring the photos library and backup location.",
+            "href": "schedule.html",
+            "categories": [
+            ]
+        },
+        "topic-en.lproj-troubleshooting": {
+            "name": "Troubleshooting",
+            "summary": "Solving common problems",
+            "href": "troubleshooting.html",
+            "categories": [
+            ]
+        },
+        "topic-en.lproj-welcome": {
+            "name": "Introduction",
+            "summary": "Purpose",
+            "href": "welcome.html",
+            "categories": [
+            ]
+        }
+    },
+    "urls": {},
+    "version": "1.0"
+}
